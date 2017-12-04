@@ -26,6 +26,8 @@
   </div>
 
   <!-- -----------Seller profile header----------------- -->
+<!--
+
   <div class="sellerProfileContainer">
     <div class=profilePic></div>
 
@@ -46,11 +48,6 @@
 
       <button id='subscribe' onclick='hitSubscribe()'> Subscribe
       </button>
-
-      <!--<div class="starsAverage">
-    <span>&#9733;</span></div>-->
-
-
 
       <div class="stars">
         <form action="">
@@ -74,6 +71,8 @@
 
 
   </div>
+ -->
+
   <!----Rating stars---->
 
 
@@ -103,38 +102,82 @@
 
 
   <script>
+
+    let restaurant_profile = ""
+
     async function getCurrentUser() {
       const response = await fetch('http://localhost:5000/api/getCurrentUser');
       const json_response = await response.json();
       const current_user = json_response['result'];
-      console.log("Current user:");
-      console.log(current_user);
+      // console.log("Current user:");
+      // console.log(current_user);
       return current_user;
     }
 
     async function fetchRestaurantProfile() {
       var current_user = await getCurrentUser();
-      console.log("inside function before");
-      console.log(current_user);
-      console.log("inside function after");
+      // console.log("inside function before");
+      // console.log(current_user);
+      // console.log("inside function after");
 
       const user_dict = { "username": current_user };
       const response_getRestaurantProfile = await fetch('http://localhost:5000/api/fetchRestaurantProfile', { method: 'POST', body: JSON.stringify(user_dict) });
       const json_restaurantProfile = await response_getRestaurantProfile.json();
-      const restaurant_profile = json_restaurantProfile['result'];
+      restaurant_profile = json_restaurantProfile['result'];
       // console.log(restaurant_profile);
       return restaurant_profile;
     }
 
-    async function test() {
-      var rp = await fetchRestaurantProfile();
-      console.log("outside function");
-      console.log(rp);
+    async function displayPageDetails() {
+      restaurant_profile = await fetchRestaurantProfile();
+      var divContainer = document.createElement('div');
+      divContainer.className = 'sellerProfileContainer';
+      document.getElementsByTagName("body")[0].appendChild(divContainer);
+
+      // profile pic of the seller
+      var divSellerImg = document.createElement('div');
+      divSellerImg.className = 'profilePic';
+      divSellerImg.style.backgroundImage = 'url(' + restaurant_profile['restaurant_image'] + ')';
+      divContainer.appendChild(divSellerImg);
+
+      // details of the seller
+      var divDetails = document.createElement('div');
+      divDetails.className = 'sellerDetails';
+      divContainer.appendChild(divDetails);
+
+      // username of the seller
+      var divSellerID = document.createElement('div');
+      divSellerID.id = 'sellerName';
+      divSellerID.innerHTML = restaurant_profile['username'];
+      divDetails.appendChild(divSellerID);
+
+      // cuisine types of the seller
+      var divFoodCTG = document.createElement('div');
+      divFoodCTG.id = 'sellerFoodType';
+      divFoodCTG.innerHTML = restaurant_profile['cuisine_types'];
+      divDetails.appendChild(divFoodCTG);
+
+      // address of the seller
+      var divSellerAddress = document.createElement('div');
+      divSellerAddress.id = 'sellerAddress';
+      divSellerAddress.innerHTML = restaurant_profile['location'];
+      divDetails.appendChild(divSellerAddress);
+
+
+      // console.log(restaurant_profile);
     }
 
-    test();
+    displayPageDetails();
 
-    // //alert('s');
+    // async function obtainRestaurantProfile() {
+    //   await fetchRestaurantProfile();
+    //   console.log(restaurant_profile);
+    // }
+
+    // fetchRestaurantProfile();
+
+
+    //alert('s');
     // var comID = 0;
     // function addComment(text, poster) {
     //   if (!text) { return; }
@@ -171,6 +214,14 @@
     // var dishesContainer = document.getElementsByClassName('dishesContainer')[0];
 
 
+
+    // async function displayTest() {
+    //   console.log("Test");
+    //   console.log(restaurant_profile);
+    // }
+
+    // displayPageDetails();
+    // displayTest();
 
 
     // function addDish(img, name, price, ingred) {
