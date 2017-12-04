@@ -1,0 +1,315 @@
+body {
+    background: url("../pics/back.jpg");
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/*-------CSS Top bar (Hoofoo,User,Cart)----------*/
+
+#topbar {
+
+    height: 40px;
+    /*background-color:#16A085;*/
+    margin-bottom: 5px;
+    box-sizing: border-box;
+}
+
+#topbar a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+#hoofoo {
+    float: left;
+    height: 100%;
+    /*background:gray;*/
+    float: left;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+#user {
+    height: 100%;
+    /*background:gray;*/
+    float: right;
+    padding: 15px;
+    box-sizing: border-box;
+
+    /*border-right: 2px solid #4B77BE;*/
+}
+
+#cart {
+    height: 100%;
+    /*background:gray;*/
+    float: right;
+    padding: 15px;
+    box-sizing: border-box;
+    margin-right: 20px;
+}
+
+/*-------------------CSS HEADER---------------------*/
+
+.header {
+
+    padding: 100px;
+    text-align: center;
+    font-family: Helvetica;
+    overflow: hidden;
+    position: relative;
+    background-image: url("../pics/homeImg.jpeg");
+    font-size: 1.2em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+/*---------------CSS Select Categories-----------*/
+
+#categories {
+    padding-top: 20px;
+
+
+    margin-left: 30%;
+
+}
+
+#ctg {
+    margin-left: 30%;
+    font-size: 1em;
+}
+
+/*---------------CSS Select location-------------*/
+
+#location {
+    margin: 0px;
+    margin-left: 30%;
+
+}
+
+#nb {
+    margin-left: 30%;
+    font-size: 1em;
+}
+
+
+/*---------------CSS Button-------------*/
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 15px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/*---------------CSS Find Chefs-------------*/
+
+#submitButton {
+    margin-left: 30%;
+    margin-bottom: 2%;
+    width: auto;
+    padding: 10px 18px;
+    background-color: #4CAF50;
+}
+
+/*---------------CSS Display Chefs-------------*/
+
+.sellerProfileContainer {
+    margin: 50px;
+    margin-left: 25%;
+    height: 150px;
+    width: 500px;
+    border: 1px solid gray;
+    border-radius: 7px;
+    box-shadow: 0px 0px 5px #888888;
+    cursor: pointer;
+
+    /*background:gray;*/
+}
+
+.sellerImg {
+    float: left;
+    width: 30%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+
+
+}
+
+.details {
+
+    float: left;
+    width: 70%;
+    height: 100%;
+    background: #F8F8FF;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    /* background-image: url("https://i2.wp.com/sanctuaryphiladelphia.org/wp-content/uploads/2016/02/Silver-Blur-Background-e1455576248201.jpg?fit=1600%2C900"); */
+}
+
+.sellerID {
+    padding-top: 10px;
+    padding-left: 30px;
+    height: 30%;
+    font-weight: bold;
+    /*background:red;*/
+}
+
+.foodCategories {
+    padding-left: 30px;
+    height: 70%;
+    font-weight: 100;
+    font-size: 14px;
+    color: gray;
+    /*background: yellow;*/
+}
+
+/*-----CSS Sign in-----*/
+
+/* Full-width input fields */
+
+input[type=text],
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Extra styles for the cancel button */
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+
+/* The Modal (background) */
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes animatezoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+/* Change styles for span and cancel button on extra small screens */
+
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .cancelbtn {
+        width: 100%;
+    }
+}
