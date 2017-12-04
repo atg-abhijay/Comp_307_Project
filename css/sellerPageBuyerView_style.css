@@ -84,7 +84,7 @@ button:hover {
     width: 20%;
     height: 100%;
     box-sizing: border-box;
-    background: url("greekchi.jpg");
+    /* background: url("../pics/greekchi.jpg"); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
