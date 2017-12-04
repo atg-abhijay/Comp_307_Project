@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request, Response
+from flask_cors import CORS
 from tinydb import TinyDB, Query
 from pprint import pprint
 import json
@@ -9,6 +10,7 @@ restaurants = db.table('restaurants')
 dishes = db.table('dishes')
 
 app = Flask(__name__)
+CORS(app)
 app.debug = True
 
 '''
@@ -116,6 +118,7 @@ def route_findChefs():
     location = body['location']
     # return jsonify({'result': findChefs(cuisine_type, location)})
     json_result = json.dumps({'result': findChefs(cuisine_type, location)})
+    print(json_result)
     resp = Response(response=json_result, status=200, mimetype='application/json')
     resp.headers['Access-Control-Allow-Origin'] = '*'
     return resp

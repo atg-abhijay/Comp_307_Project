@@ -597,8 +597,8 @@
         const findChefsJson = await findChefsResult.json();
         console.log("Here2");
         // console.log(findChefsJson);
-        const resultChefs = Array(findChefsJson['result']);
-        // console.log(resultChefs);
+        const resultChefs = findChefsJson['result'];
+        console.log(resultChefs);
         /*remove from screen all sellers of previous address */
         removeElementsByClass('sellerProfileContainer');
 
@@ -617,31 +617,31 @@
             divSellerImg.className = 'sellerImg';
             var key = 'username';
             var single_result = resultChefs[i];
-            // divSellerImg.style.backgroundImage = 'url(' + single_result[key] + ')';
+            divSellerImg.style.backgroundImage = 'url(' + resultChefs[i]['restaurant_image'] + ')';
 
             console.log("before entire result");
             console.log(single_result);
             console.log("after entire result");
             console.log("");
             console.log("before username");
-            console.log(single_result["username"]);
+            console.log(single_result['username']);
             console.log("after username");
 
             divContainer.appendChild(divSellerImg);
 
-            // var divDetails = document.createElement('div');
-            // divDetails.className = 'details';
-            // divContainer.appendChild(divDetails);
+            var divDetails = document.createElement('div');
+            divDetails.className = 'details';
+            divContainer.appendChild(divDetails);
 
-            // var divSellerID = document.createElement('div');
-            // divSellerID.className = 'sellerID';
-            // divSellerID.innerHTML = resultChefs[i]["username"];
-            // divDetails.appendChild(divSellerID);
+            var divSellerID = document.createElement('div');
+            divSellerID.className = 'sellerID';
+            divSellerID.innerHTML = resultChefs[i]["username"];
+            divDetails.appendChild(divSellerID);
 
-            // var divFoodCTG = document.createElement('div');
-            // divFoodCTG.className = 'foodCategories';
-            // divFoodCTG.innerHTML = resultChefs[i]["cuisine_types"];
-            // divDetails.appendChild(divFoodCTG);
+            var divFoodCTG = document.createElement('div');
+            divFoodCTG.className = 'foodCategories';
+            divFoodCTG.innerHTML = resultChefs[i]["cuisine_types"];
+            divDetails.appendChild(divFoodCTG);
         }
 
         /*if there's no seller of that neighbour, display notFound message*/
@@ -660,41 +660,6 @@
         displaySellers(body_dict);
 
     }
-
-    // function findChefs(body_dict) {
-    //     // const chefsRequest = new Request('http://localhost:5000/api/findChefs', {method: 'POST',
-    //     // body: '{"cuisine_type": "Italian", "location":"Paris"}'});
-    //     const chefsRequest = new Request('http://localhost:5000/api/findChefs', {
-    //         method: 'POST',
-    //         body: JSON.stringify(body_dict)});
-    //     // console.log("Here");
-    //     // console.log(body_dict);
-
-    //     // getDetails(chefsRequest.url, chefsRequest.method);
-    //     let json_data = {};
-    //     fetch(chefsRequest)
-    //         .then(response => {
-    //             if (response.status === 200) {
-    //                 // return response.json();
-    //                 json_data = response.json();
-    //                 console.log("Here1");
-    //                 console.log(json_data);
-    //                 return json_data;
-    //                 // renderHTML(toString(response.json()));
-    //             }
-    //             else {
-    //                 throw new Error('Something went wrong on api server!');
-    //             }
-    //         })
-    //         .then(response => {
-    //             console.debug(response);
-    //         })
-    //         .catch(error => {
-    //             console.error(error);
-    //         });
-
-    //     // return json_data;
-    // }
 
     /*Function remove all elements by Class name*/
     function removeElementsByClass(className) {
