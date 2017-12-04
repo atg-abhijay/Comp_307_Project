@@ -126,8 +126,8 @@ def route_setCurrentUser():
 
 @app.route('/api/getCurrentUser', methods=['GET'])
 def route_getCurrentUser():
-    currentUser = getCurrentUserName()
-    resp = Response(currentUser)
+    json_result = json.dumps({'result': getCurrentUserName()})
+    resp = Response(response=json_result, status=200, mimetype='application/json')
     resp.headers['Access-Control-Allow-Origin'] = '*'
     return resp
 
@@ -188,11 +188,6 @@ def route_deleteDish():
     deleteDish(d_name)
     return "Successfully deleted dish"
 
-
-@app.route('/api/fetchRestoProfile', methods=['POST'])
-def fetchRestoProfile():
-    return ""
-
 @app.route('/api/addUser', methods=['POST'])
 def route_addUser():
     body = request.get_json() #the request object here is the request that this endpoint recieves (something that someone sent to this)
@@ -238,9 +233,14 @@ def route_signIn():
 
 @app.route('/api/fetchRestaurantProfile', methods=['POST'])
 def route_fetchProfile():
-    body = request.get_json()
+    body = request.get_json(force=True)
     uname = body['username']
-    return jsonify({'result': fetchRestaurantProfile(uname)})
+    # return jsonify({'result': fetchRestaurantProfile(uname)})
+    json_result = json.dumps({'result': fetchRestaurantProfile(uname)})
+    print(json_result)
+    resp = Response(response=json_result, status=200, mimetype='application/json')
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp
 
 @app.route('/_add_numbers')
 def add_numbers():
