@@ -169,6 +169,7 @@
             divContainer.className = 'sellerProfileContainer';
             var username = resultChefs[i]['username']
             divContainer.id = username;
+            divContainer.addEventListener("click", clickSeller);
             // divContainer.onclick(clickSeller);
 
             document.getElementsByTagName("body")[0].appendChild(divContainer);
@@ -209,7 +210,7 @@
 
     }
 
-    document.getElementsByClassName('sellerProfileContainer').onclick(clickSeller);
+
     /* function executed when someone clicks
         on the button 'Find chefs' */
     function functionCalledOnFindChefs(){
@@ -223,11 +224,10 @@
     }
 
     function clickSeller() {
-        //setCurrentUser(element.id);
         console.log("Getting id");
         console.log(this.id);
-        // setCurrentUser(clicked.id);
-        // location.href = 'sellerPageBuyerView.html';
+        setCurrentUser(this.id);
+        location.href = 'sellerPageBuyerView.html';
     }
 
     /*Function remove all elements by Class name*/
