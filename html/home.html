@@ -167,17 +167,15 @@
             numProfiles++;
             var divContainer = document.createElement('div');
             divContainer.className = 'sellerProfileContainer';
-            divContainer.onclick = function () {
-                location.href = 'sellerPageBuyerView.html';
-            }
+            var username = resultChefs[i]['username']
+            divContainer.id = username;
+            // divContainer.onclick(clickSeller);
 
             document.getElementsByTagName("body")[0].appendChild(divContainer);
 
             // image of the seller
             var divSellerImg = document.createElement('div');
             divSellerImg.className = 'sellerImg';
-            var key = 'username';
-            var single_result = resultChefs[i];
             divSellerImg.style.backgroundImage = 'url(' + resultChefs[i]['restaurant_image'] + ')';
             // console.log(single_result);
             // console.log(single_result['username']);
@@ -191,7 +189,7 @@
             // username of the seller
             var divSellerID = document.createElement('div');
             divSellerID.className = 'sellerID';
-            divSellerID.innerHTML = resultChefs[i]['username'];
+            divSellerID.innerHTML = username;
             divDetails.appendChild(divSellerID);
 
             // cuisine types of the seller
@@ -211,12 +209,25 @@
 
     }
 
+    document.getElementsByClassName('sellerProfileContainer').onclick(clickSeller);
     /* function executed when someone clicks
         on the button 'Find chefs' */
     function functionCalledOnFindChefs(){
         const body_dict = { "cuisine_type": document.getElementById('ctg').value, "location": document.getElementById('nb').value };
         displaySellers(body_dict);
+    }
 
+    async function setCurrentUser(username) {
+        const user_dict = { "current_user": username };
+        await fetch('http://localhost:5000/api/setCurrentUser', { method: 'POST', body: JSON.stringify(user_dict) });
+    }
+
+    function clickSeller() {
+        //setCurrentUser(element.id);
+        console.log("Getting id");
+        console.log(this.id);
+        // setCurrentUser(clicked.id);
+        // location.href = 'sellerPageBuyerView.html';
     }
 
     /*Function remove all elements by Class name*/

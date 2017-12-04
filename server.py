@@ -9,6 +9,8 @@ users = db.table('users') #this is users table
 restaurants = db.table('restaurants')
 dishes = db.table('dishes')
 
+currentUsername = ""
+
 app = Flask(__name__)
 CORS(app)
 app.debug = True
@@ -18,6 +20,13 @@ DB functions
 
 '''
 # users functionality
+def setCurrentUserName(uname):
+    global currentUsername
+    currentUsername = uname
+
+def getCurrentUserName():
+    return currentUsername
+
 def addUser(uname, pwd, email):
     users.insert({'username' : uname, 'password' : pwd, "email" : email})
 
@@ -105,6 +114,23 @@ def fetchRestaurantProfile(uname):
 '''
 Actual Endpoints
 '''
+
+@app.route('/api/setCurrentUser', methods=['POST'])
+def route_setCurrentUser():
+    body = request.get_json(force=True)
+    print(body)
+    currentUser = body['current_user']
+    setCurrentUserName(currentUser)
+    return "Current user set!"
+
+
+@app.route('/api/getCurrentUser', methods=['GET'])
+def route_getCurrentUser():
+    currentUser = getCurrentUserName()
+    resp = Response(currentUser)
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp
+
 
 @app.route('/home', methods=['GET'])
 def jay():
