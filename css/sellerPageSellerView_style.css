@@ -105,7 +105,7 @@ button:hover {
     width: 20%;
     height: 100%;
     box-sizing: border-box;
-    background: url("italian2.jpg");
+    background: url("../pics/italian2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
