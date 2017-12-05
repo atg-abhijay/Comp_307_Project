@@ -125,7 +125,7 @@
         "2": {
             "dish_name": "Chole Bhature",
             "dish_price": 8.9,
-            "dish_pic": "chole_bhature.jpeg",
+            "dish_pic": "../pics/japchi.jpg",
             "dish_ingredients": [
                 "Chole",
                 "Bhature",
@@ -137,7 +137,7 @@
         "7": {
             "dish_name": "Pani Puri",
             "dish_price": 4.95,
-            "dish_pic": "pani_puri.jpeg",
+            "dish_pic": "../pics/omlette.jpg",
             "dish_ingredients": [
                 "Imli",
                 "Green chutney",
@@ -233,7 +233,7 @@
         "16": {
             "dish_name": "Onigiri",
             "dish_price": 3.0,
-            "dish_pic": "onigiri.jpeg",
+            "dish_pic": "../pics/jap.jpg",
             "dish_ingredients": [
                 "Rice",
                 "Kelp",
@@ -241,19 +241,19 @@
             ]
         },
         "17": {
-            "dish_name": "asgasgsad",
+            "dish_name": "Soup",
             "dish_price": 5.0,
-            "dish_pic": "443tgsgadsf.jpeg",
+            "dish_pic": "../pics/nishi.jpg",
             "dish_ingredients": [
-                "ashgsadgas",
-                "ashshag",
-                "asdhafdhdfh"
+                "Soup stock",
+                "Water",
+                "Salt"
             ]
         },
         "18": {
             "dish_name": "Poutine",
             "dish_price": 4.5,
-            "dish_pic": "poutine.jpeg",
+            "dish_pic": "../pics/steak.jpg",
             "dish_ingredients": [
                 "Fries",
                 "Gravy"
