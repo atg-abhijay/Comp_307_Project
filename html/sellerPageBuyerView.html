@@ -72,7 +72,7 @@
 
     <script>
 
-        // ************* CODE TO GET CURRENT USER ***************
+        // ************* GET CURRENT USER ***************
 
         async function getCurrentUser() {
             const response = await fetch('http://localhost:5000/api/getCurrentUser');
@@ -83,7 +83,7 @@
 
 
 
-        // ************* CODE TO FETCH RESTAURANT'S PROFILE ***************
+        // ************* FETCH RESTAURANT'S PROFILE ***************
 
         async function fetchRestaurantProfile() {
             var current_user = await getCurrentUser();
@@ -96,7 +96,7 @@
 
 
 
-        // ************* CODE TO DISPLAY PAGE DETAILS ***************
+        // ************* DISPLAY PAGE DETAILS ***************
 
         async function displayPageDetails() {
             var restaurant_profile = await fetchRestaurantProfile();
@@ -162,7 +162,7 @@
 
 
 
-        // ************* CODE TO DISPLAY DISHES ***************
+        // ************* DISPLAY DISHES ***************
 
         async function displayDishes() {
             var restaurant_profile = await fetchRestaurantProfile();
@@ -216,12 +216,9 @@
                 var addCartButton = document.createElement('div');
                 addCartButton.className = "addCartButton";
                 addCartButton.innerHTML = 'ORDER NOW';
+                addCartButton.addEventListener("click", orderNow);
                 info.appendChild(addCartButton);
 
-                // TODO
-                addCartButton.onclick = function () {
-                    addCartButton.style.display = 'none';
-                }
 
                 // adding the block to the dishes container
                 dishesContainer.appendChild(block);
@@ -229,7 +226,21 @@
 
         }
 
-        // ************* CODE FOR CLICKING 'SUBSCRIBE' BUTTON ***************
+        // ************* CLICKING 'ORDER NOW' BUTTON ***************
+
+        var num_times = 0;
+        function orderNow() {
+            num_times += 1;
+            if (num_times % 2 != 0) {
+                this.innerHTML = "Done!";
+            }
+            else {
+                this.innerHTML = "ORDER NOW";
+            }
+
+        }
+
+        // ************* CLICKING 'SUBSCRIBE' BUTTON ***************
 
         var c = 0;
         function hitSubscribe() {
