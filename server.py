@@ -132,10 +132,6 @@ def route_getCurrentUser():
     return resp
 
 
-@app.route('/home', methods=['GET'])
-def jay():
-    return jsonify([{"dish_name" : "aloo", "price": 12}, {"dish_name" : "tikki", "price": 20}, {"dish_name" : "dahai", "price": 15}])
-
 @app.route('/api/findChefs', methods=['POST'])
 def route_findChefs():
     body = request.get_json(force=True)
@@ -150,29 +146,26 @@ def route_findChefs():
     return resp
     # return "Found chefs!"
 
-@app.route('/api/retrieveDishes', methods=['GET'])
-def route_retrieveDishes():
-
-    return ""
 
 @app.route('/api/addDish', methods=['POST'])
 def route_addDish():
-    body = request.get_json()
+    body = request.get_json(force=True)
     d_name = body['dish_name']
     d_price = body['dish_price']
     d_pic = body['dish_pic']
     d_ingredients = body['dish_ingredients']
     uname = body['username']
 
-    #TODO check return of object ID - done
     dishID = addDish(d_name, d_price, d_pic, d_ingredients)
     print(dishID)
     addDishToRestaurant(dishID, uname)
     return "Successfully added dish"
 
+
+
 @app.route('/api/editDish', methods=['POST'])
 def route_editDish():
-    body = request.get_json()
+    body = request.get_json(force=True)
     d_name = body['dish_name']
     d_price = body['dish_price']
     d_ingredients = body['dish_ingredients']
@@ -180,31 +173,37 @@ def route_editDish():
     editDish(d_name, d_price, d_ingredients)
     return "Successfully edited dish"
 
+
+
 @app.route('/api/deleteDish', methods=['POST'])
 def route_deleteDish():
-    body = request.get_json()
+    body = request.get_json(force=True)
     d_name = body['dish_name']
 
     deleteDish(d_name)
     return "Successfully deleted dish"
 
+
+
 @app.route('/api/addUser', methods=['POST'])
 def route_addUser():
-    body = request.get_json() #the request object here is the request that this endpoint recieves (something that someone sent to this)
-    r = request
-    print(r)
-    print("Hello")
+    body = request.get_json(force=True)
+    # the request object here is the request that this
+    # endpoint recieves (something that someone sent to this)
     print(body)
     uname = body['username']
     pwd = body['password']
     email = body['email']
+
     addUser(uname, pwd, email)
     makeRestaurant(uname)
     return "Successfully added user"
 
+
+
 @app.route('/api/editRestaurant', methods=['POST'])
 def route_editRestaurant():
-    body = request.get_json()
+    body = request.get_json(force=True)
     uname = body['username']
     owner_name = body['owner_name']
     loc = body['location']
@@ -215,20 +214,34 @@ def route_editRestaurant():
     editRestaurant(uname, owner_name, loc, cuisine_types, r_img, r_name)
     return "Successfully edited restaurant"
 
+
+
 @app.route('/api/getRestaurantDishes', methods=['POST'])
 def route_getRestaurantDishes():
-    body = request.get_json()
+    body = request.get_json(force=True)
     uname = body['username']
     dishes_list = returnRestaurantDishes(uname)
-    return jsonify({'result': dishes_list})
+    # return jsonify({'result': dishes_list})
+    json_result = json.dumps({'result': dishes_list})
+    print(json_result)
+    resp = Response(response=json_result, status=200, mimetype='application/json')
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp
     # return "Got dishes!"
+
+
 
 @app.route('/api/signIn', methods=['POST'])
 def route_signIn():
-    body = request.get_json()
+    body = request.get_json(force=True)
     uname = body['username']
     pwd = body['password']
-    return jsonify({'result': signIn(uname, pwd)})
+    # return jsonify({'result': signIn(uname, pwd)})
+    json_result = json.dumps({'result': signIn(uname, pwd)})
+    print(json_result)
+    resp = Response(response=json_result, status=200, mimetype='application/json')
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp
 
 
 @app.route('/api/fetchRestaurantProfile', methods=['POST'])
@@ -242,11 +255,7 @@ def route_fetchProfile():
     resp.headers['Access-Control-Allow-Origin'] = '*'
     return resp
 
-@app.route('/_add_numbers')
-def add_numbers():
-    a = request.args.get('a', 0, type=int)
-    b = request.args.get('b', 0, type=int)
-    return jsonify(result=a + b)
+
 
 '''
 Test Endpoints
@@ -268,11 +277,19 @@ def test_returnAllUsers():
 
 @app.route('/test/returnAllDishes', methods=['GET'])
 def test_returnAllDishes():
-    return jsonify({'result': returnAllDishes()})
+    # return jsonify({'result': returnAllDishes()})
+    json_result = json.dumps({'result': returnAllDishes()})
+    resp = Response(response=json_result, status=200, mimetype='application/json')
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp
 
 @app.route('/test/returnAllRestaurants', methods=['GET'])
 def test_returnAllRestaurants():
-    return jsonify({'result': returnAllRestaurants()})
+    # return jsonify({'result': returnAllRestaurants()})
+    json_result = json.dumps({'result': returnAllRestaurants()})
+    resp = Response(response=json_result, status=200, mimetype='application/json')
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp
 
 if __name__ == "__main__":
     app.run(debug=True)
