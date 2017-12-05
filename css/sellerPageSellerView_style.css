@@ -1,0 +1,358 @@
+body {
+    /*background:url("http://www.1designshop.com/wp-content/uploads/2015/12/1dsp-20151221-pattern005.png");*/
+    /*background:url("https://hdwallpapers8k.com/wp-content/uploads/clear-sky-nature-hd-wallpaper-1920x1080-3829-1920x1080.jpg");*/
+    background: #DDEDED;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    height: 100%;
+
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*-------CSS Top bar (Hoofoo,User,Cart)----------*/
+
+#topbar {
+
+    height: 40px;
+    /*background-color:#16A085;*/
+    margin-bottom: 5px;
+    box-sizing: border-box;
+}
+
+#topbar a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+#hoofoo {
+    float: left;
+    height: 100%;
+    /*background:gray;*/
+    float: left;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+#user {
+    height: 100%;
+    /*background:gray;*/
+    float: right;
+    padding: 15px;
+    box-sizing: border-box;
+
+    /*border-right: 2px solid #4B77BE;*/
+}
+
+#cart {
+    height: 100%;
+    /*background:gray;*/
+    float: right;
+    padding: 15px;
+    box-sizing: border-box;
+    margin-right: 20px;
+}
+
+/*---------------CSS Button-------------*/
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 15px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+#subscribe {
+    background-color: red;
+    width: 16%;
+}
+
+#addDishButt {
+
+    margin-left: 50px;
+    width: 100px;
+
+}
+
+/*-------CSS Seller profile header----------*/
+
+.sellerProfileContainer {
+    box-sizing: border-box;
+
+    margin: 50px;
+    margin-top: 10px;
+    width: 100%;
+    height: 200px;
+    border: 1px solid #EDEDED;
+
+}
+
+.profilePic {
+    width: 20%;
+    height: 100%;
+    box-sizing: border-box;
+    background: url("italian2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+
+    float: left;
+}
+
+.sellerDetails {
+
+    /*background:white;*/
+    padding: 10px;
+    font-size: 16px;
+
+    width: 80%;
+    height: 100%;
+
+    float: left;
+    box-sizing: border-box;
+}
+
+#sellerName {
+    font-size: 20px;
+    margin: 5px;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+#sellerFoodType {
+
+
+    font-weight: 100;
+    font-size: 16px;
+    color: gray;
+    margin: 5px;
+    box-sizing: border-box;
+}
+
+#sellerAddress {
+
+    margin: 5px;
+    box-sizing: border-box;
+}
+
+#rating {
+    margin: 5px;
+    box-sizing: border-box;
+}
+
+#subscribe {
+    margin: 5px;
+    box-sizing: border-box;
+}
+
+
+/*------CSS Add dish-------*/
+
+input[type=text],
+select {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 50px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 70px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 10px;
+    margin: 8px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+input[type=file] {
+    margin: 8px 50px;
+}
+
+.fieldName {
+    margin-left: 50px;
+}
+
+#addDishContainer {
+    display: none;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    width: 300px;
+    height: 300px;
+    border-radius: 15px;
+    background-color: #f2f2f2;
+    padding: 30px 10px;
+    z-index: 1002;
+}
+
+.black_overlay {
+
+    display: none;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 1001;
+    -moz-opacity: 0.8;
+    opacity: .80;
+    filter: alpha(opacity=80);
+}
+
+/*-------CSS Menu----------*/
+
+.menu {
+    letter-spacing: 3px;
+    margin-left: 40px;
+    margin-top: 40px;
+    box-sizing: border-box;
+    font-size: 30px;
+
+}
+
+/*-------CSS Dish----------*/
+
+.dishesContainer {
+
+    font-size: 15px;
+    height: 366px;
+
+}
+
+.block {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 40px;
+    width: 270px;
+    height: 100%;
+    float: left;
+    background: blue;
+
+
+}
+
+.dishImg {
+    width: 100%;
+    height: 58%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+
+.info {
+    height: 45%;
+    background: #EDEDED;
+
+}
+
+
+.namePrice {
+    letter-spacing: 1px;
+    padding-top: 11%;
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 30%;
+
+}
+
+.nameDish {
+
+    color: #E67864;
+    font-weight: bold;
+    padding-LEFT: 8%;
+    width: 75%;
+    box-sizing: border-box;
+    height: 100%;
+
+    float: left;
+    overflow: auto;
+}
+
+.priceDish {
+    box-sizing: border-box;
+    border-left: 2.5px solid #DEDEDE;
+    text-align: center;
+    margin-left: 75%;
+    width: 25%;
+    height: 100%;
+    overflow: auto;
+
+}
+
+.ingredient {
+
+    padding-top: 2%;
+    padding-left: 8%;
+    padding-right: 10%;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+    height: 30%;
+    overflow: auto;
+
+}
+
+.editButton {
+    font-size: 15px;
+    color: white;
+
+    padding: 2%;
+
+    display: inline-block;
+
+    margin-left: 9%;
+    margin-top: 5%;
+    height: auto;
+    width: auto;
+    background: #E67864;
+
+    letter-spacing: 1.7px;
+
+}
+
+.comment {
+    padding: 50px;
+    padding-bottom: 20px;
+
+    clear: both;
+}
+
+
+.com {
+    background: white;
+    width: 550px;
+
+    margin: 50px;
+    padding: 20px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
