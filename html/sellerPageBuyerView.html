@@ -3,342 +3,318 @@
 
 <head>
 
-  <link rel="stylesheet" href="../css/sellerPageBuyerView_style.css">
+    <link rel="stylesheet" href="../css/sellerPageBuyerView_style.css">
 
 </head>
 
 <body>
 
-  <!-- --------------Top bar----------------- -->
-  <div id='topbar'>
-    <div id='hoofoo'>
-      <a href="#">Hoofoo</a>
-    </div>
+    <!-- --------------Top bar----------------- -->
+    <div id='topbar'>
+        <div id='hoofoo'>
+            <a href="#">Hoofoo</a>
+        </div>
 
-    <div id='cart'>
-      <a href="#">Cart</a>
-    </div>
+        <div id='cart'>
+            <a href="#">Cart</a>
+        </div>
 
-    <div id='user' onclick="document.getElementById('id01').style.display='block'">
-      <a href="buyerProfile.html">alex95</a>
-    </div>
-
-  </div>
-
-  <!-- -----------Seller profile header----------------- -->
-<!--
-
-  <div class="sellerProfileContainer">
-    <div class=profilePic></div>
-
-    <div class='sellerDetails'>
-      <div id='sellerName'>SinjinCute
-      </div>
-      <div id='sellerFoodType'> Chinese, Greek, Thai, Japanese, Italian, Mexico
-      </div>
-
-
-      <div id='sellerAddress'> 723 Wallbridge Loyalist, Ontario, K8N9L1
-      </div>
-      <div id='rating'> Overall rating:
-        <span>&#9733;</span>
-        <span>&#9733;</span>
-        <span>&#9733;</span>
-      </div>
-
-      <button id='subscribe' onclick='hitSubscribe()'> Subscribe
-      </button>
-
-      <div class="stars">
-        <form action="">
-          <input class="star star-5" id="star-5" type="radio" name="star" />
-          <label class="star star-5" for="star-5" style="margin-right:110px"></label>
-          <input class="star star-4" id="star-4" type="radio" name="star" />
-          <label class="star star-4" for="star-4"></label>
-          <input class="star star-3" id="star-3" type="radio" name="star" />
-          <label class="star star-3" for="star-3"></label>
-          <input class="star star-2" id="star-2" type="radio" name="star" />
-          <label class="star star-2" for="star-2"></label>
-          <input class="star star-1" id="star-1" type="radio" name="star" />
-          <label class="star star-1" for="star-1"></label>
-        </form>
-
-
-      </div>
+        <div id='user' onclick="document.getElementById('id01').style.display='block'">
+            <a href="buyerProfile.html">alex95</a>
+        </div>
 
     </div>
 
+    <!-- -----------Seller profile header----------------- -->
+
+    <div class="sellerProfileContainer">
+        <!-- <div class='sellerDetails'>
+            <div id='rating'> Overall rating:
+                <span>&#9733;</span>
+                <span>&#9733;</span>
+                <span>&#9733;</span>
+            </div>
+
+            <div class="stars">
+                <form action="">
+                <input class="star star-5" id="star-5" type="radio" name="star" />
+                <label class="star star-5" for="star-5" style="margin-right:110px"></label>
+                <input class="star star-4" id="star-4" type="radio" name="star" />
+                <label class="star star-4" for="star-4"></label>
+                <input class="star star-3" id="star-3" type="radio" name="star" />
+                <label class="star star-3" for="star-3"></label>
+                <input class="star star-2" id="star-2" type="radio" name="star" />
+                <label class="star star-2" for="star-2"></label>
+                <input class="star star-1" id="star-1" type="radio" name="star" />
+                <label class="star star-1" for="star-1"></label>
+                </form>
+            </div>
+        </div> -->
+    </div>
+
+    <!----Rating stars---->
 
 
-  </div>
- -->
-
-  <!----Rating stars---->
-
-
-  <!-------------Our menu------------------>
-  <div class="menu"> Our menu </div>
-  <div class='dishesContainer'></div>
+    <!-------------Our menu------------------>
+    <div class="menu"> Our menu </div>
+    <div class='dishesContainer'></div>
 
 
-  <!-------------Post Comment------------------>
-  <div class='comment'>
-    <h2> Comments
-      <h2>
-  </div>
+    <!-------------Post Comment------------------>
+    <div class='comment'>
+        <h2> Comments
+            <h2>
+    </div>
 
-  <div>
-    <textarea id='textbox' class='textbox' rows="7" cols="70">
+    <div>
+        <textarea id='textbox' class='textbox' rows="7" cols="70">
 </textarea>
 
-    <div id='postComment'>
-      <button type='button' onclick="addComment(document.getElementById('textbox').value,'alex95')">Post </button>
+        <div id='postComment'>
+            <button type='button' onclick="addComment(document.getElementById('textbox').value,'alex95')">Post </button>
+        </div>
     </div>
-  </div>
 
-  <!-------------Comments-----------------
+    <!-------------Comments-----------------
 <div class='com' id='com1'>Food is awesomeFood is awesomeFood is awesomeFood is awesomeFood is awesomeFood is awesomeFood is awesome!<br>Sinjin</div>
 <div class='com' id='com2'>Food is awesomeFood is awesomeFood is awesomeFood is awesomeFood is awesomeFood is awesomeFood is awesome!<br>Sernin</div>-->
 
 
-  <script>
-
-    let restaurant_profile = ""
-
-    async function getCurrentUser() {
-      const response = await fetch('http://localhost:5000/api/getCurrentUser');
-      const json_response = await response.json();
-      const current_user = json_response['result'];
-      // console.log("Current user:");
-      // console.log(current_user);
-      return current_user;
-    }
-
-    async function fetchRestaurantProfile() {
-      var current_user = await getCurrentUser();
-      // console.log("inside function before");
-      // console.log(current_user);
-      // console.log("inside function after");
-
-      const user_dict = { "username": current_user };
-      const response_getRestaurantProfile = await fetch('http://localhost:5000/api/fetchRestaurantProfile', { method: 'POST', body: JSON.stringify(user_dict) });
-      const json_restaurantProfile = await response_getRestaurantProfile.json();
-      restaurant_profile = json_restaurantProfile['result'];
-      // console.log(restaurant_profile);
-      return restaurant_profile;
-    }
-
-    async function displayPageDetails() {
-      restaurant_profile = await fetchRestaurantProfile();
-      var divContainer = document.createElement('div');
-      divContainer.className = 'sellerProfileContainer';
-      document.getElementsByTagName("body")[0].appendChild(divContainer);
-
-      // profile pic of the seller
-      var divSellerImg = document.createElement('div');
-      divSellerImg.className = 'profilePic';
-      divSellerImg.style.backgroundImage = 'url(' + restaurant_profile['restaurant_image'] + ')';
-      divContainer.appendChild(divSellerImg);
-
-      // details of the seller
-      var divDetails = document.createElement('div');
-      divDetails.className = 'sellerDetails';
-      divContainer.appendChild(divDetails);
-
-      // username of the seller
-      var divSellerID = document.createElement('div');
-      divSellerID.id = 'sellerName';
-      divSellerID.innerHTML = restaurant_profile['username'];
-      divDetails.appendChild(divSellerID);
-
-      // cuisine types of the seller
-      var divFoodCTG = document.createElement('div');
-      divFoodCTG.id = 'sellerFoodType';
-      divFoodCTG.innerHTML = restaurant_profile['cuisine_types'];
-      divDetails.appendChild(divFoodCTG);
-
-      // address of the seller
-      var divSellerAddress = document.createElement('div');
-      divSellerAddress.id = 'sellerAddress';
-      divSellerAddress.innerHTML = restaurant_profile['location'];
-      divDetails.appendChild(divSellerAddress);
-
-
-      // console.log(restaurant_profile);
-    }
-
-    displayPageDetails();
-
-    // async function obtainRestaurantProfile() {
-    //   await fetchRestaurantProfile();
-    //   console.log(restaurant_profile);
-    // }
-
-    // fetchRestaurantProfile();
-
-
-    //alert('s');
-    // var comID = 0;
-    // function addComment(text, poster) {
-    //   if (!text) { return; }
-    //   //display div
-    //   //if id = even then background = white else gray
-    //   //height of div depends on length of text, but we dont care since it does it for u, just set innerHTMl = text, so no need to mention height
-
-    //   var com = document.createElement('div');
-    //   com.className = 'com';
-    //   com.id = 'com' + comID;
-    //   if (comID % 2 == 0) color = 'white';
-    //   else color = '#EDEDED';
-    //   com.style.background = color;
-    //   com.innerHTML = text + '<br><br><b>' + poster + '</b> - 1 hour ago';
-    //   if (poster == 'alex95') com.innerHTML = text + '<br><br><b>' + poster + '</b> - Just now';
-
-    //   var prevCom = document.getElementById('com' + (comID - 1));
-    //   document.getElementsByTagName('body')[0].insertBefore(com, prevCom);
-
-    //   comID++;
-    //   document.getElementById('textbox').value = '';
-
-    // }
-
-    // addComment("Hey food is awesome!", "potato");
-    // addComment("Keep it up guys", "comp307guy");
-    // addComment("Food is okay.Food is okay.Food is okay.Food is okay.Food is okay.Food is okay.Food is okay.", "longliveking");
-    // addComment("food sucks", "hater92");
-
-
-    // var numOfDishes = 0;
-
-
-    // var dishesContainer = document.getElementsByClassName('dishesContainer')[0];
-
-
-
-    // async function displayTest() {
-    //   console.log("Test");
-    //   console.log(restaurant_profile);
-    // }
-
-    // displayPageDetails();
-    // displayTest();
-
-
-    // function addDish(img, name, price, ingred) {
-    //   //block (block < parentDiv); needs ID and Class (ID,C)
-    //   var block = document.createElement('div');
-    //   block.className = 'block';
-
-    //   block.id = 'block' + '' + numOfDishes;
-    //   //alert(block.id);
-
-
-
-    //   var dishImg = document.createElement('div');
-    //   block.appendChild(dishImg);
-    //   dishImg.className = 'dishImg';
-    //   dishImg.id = 'dishImg' + numOfDishes;
-    //   dishImg.style.backgroundImage = "url(" + img + ")";
-
-
-    //   var info = document.createElement('div');
-    //   info.className = "info";
-    //   block.appendChild(info);
-
-
-    //   var namePrice = document.createElement('div');
-    //   namePrice.className = "namePrice";
-
-
-    //   info.appendChild(namePrice);
-
-    //   //namePrice (C)  (nameDish(C,ID) + priceDish(C,ID))
-    //   var nameDish = document.createElement('div');
-    //   nameDish.className = "nameDish";
-    //   nameDish.id = 'nameDish' + numOfDishes;
-
-    //   nameDish.innerHTML = name;
-
-    //   //C,ID
-    //   var priceDish = document.createElement('div');
-    //   priceDish.className = "priceDish";
-    //   priceDish.id = 'priceDish' + numOfDishes;
-    //   priceDish.innerHTML = '$' + price;
-
-    //   namePrice.appendChild(nameDish);
-    //   namePrice.appendChild(priceDish);
-
-
-    //   //C,ID
-    //   var ingredient = document.createElement('div');
-    //   ingredient.className = "ingredient";
-    //   ingredient.id = 'ingredient' + numOfDishes;
-    //   ingredient.innerHTML = ingred;
-    //   info.appendChild(ingredient);
-
-    //   //C,ID
-    //   var addCartButton = document.createElement('div');
-    //   addCartButton.className = "addCartButton";
-    //   addCartButton.id = 'addCartButton' + numOfDishes;
-    //   addCartButton.innerHTML = 'ORDER NOW';
-    //   info.appendChild(addCartButton);
-
-    //   addCartButton.onclick = function () {
-    //     addCartButton.style.display = 'none';
-    //   }
-
-    //   var prevDish = document.getElementById('block' + (numOfDishes - 1));
-    //   dishesContainer.insertBefore(block, prevDish);
-
-    //   numOfDishes++;
-
-
-    // }
-
-
-    // var dishes = [{ pic: "pizza.jpg", name: "Pizza", price: "13.53", ingred: "Beef, tomato, hot sauce, fish" },
-    // { pic: "pizzaTomato.jpg", name: "Pizza Tomato", price: "10.35", ingred: "Beef, tomato, hot sauce, fish" }, { pic: "meatBall.jpg", name: "Meat ball", price: "23.55", ingred: "Beef, tomato, hot sauce, fish" }, { pic: "sushi.jpg", name: "Deli-Sushi", price: "11.76", ingred: "Beef, tomato, hot sauce, fish" }, { pic: "nishi.jpg", name: "Nishi", price: "11.34", ingred: "Beef, tomato, hot sauce, fish" }, { pic: "frites.jpg", name: "Frites", price: "12.89", ingred: "Beef, tomato, hot sauce, fish" }, { pic: "friedChicken.jpg", name: "Fried Chicken", price: "15.00", ingred: "Beef, tomato, hot sauce, fish" },
-    // { pic: "steak.jpg", name: "Steak", price: "15.99", ingred: "Beef, tomato, hot sauce, fish" }, { pic: "omlette.jpg", name: "Breakfast", price: "10.15", ingred: "Beef, tomato, hot sauce, fish" },
-    // { pic: "kebab.jpg", name: "Kebab", price: "15.75", ingred: "Beef, tomato, hot sauce, fish" }, { pic: "saumon.jpg", name: "Awesome saumon", price: "12.00", ingred: "Beef, tomato, hot sauce, fish" }]
-
-    // //dishes[i].pic,dishes[i].name,dishes[i].price,dishes[i].ingred*/
-    // var pics = ["pizza.jpg"];
-    // pics.push("pizzaTomato.jpg");
-    // pics.push("meatBall.jpg");
-    // pics.push("sushi.jpg");
-    // pics.push("nishi.jpg");
-    // pics.push("frites.jpg");
-    // pics.push("friedChicken.jpg");
-    // pics.push("steak.jpg");
-    // pics.push("omlette.jpg");
-    // pics.push("kebab.jpg");
-    // pics.push("saumon.jpg");
-
-
-
-
-    // //addDish(pics[0],"abc","$12","beef");
-    // for (var i = 0; i < pics.length; i++) {
-    //   addDish(dishes[i].pic, dishes[i].name, dishes[i].price, dishes[i].ingred);
-    // }
-
-
-    // var c = 0;
-    // function hitSubscribe() {
-    //   var x = document.getElementById('subscribe');
-    //   if (c % 2 == 0) {
-    //     x.innerHTML = 'Subscribed !';
-    //     x.style.background = 'gray';
-    //   }
-    //   else {
-    //     x.innerHTML = 'Subscribe';
-    //     x.style.background = '#E67864';
-    //   }
-    //   c++;
-    // }
-
-
-  </script>
+    <script>
+
+        // ************* CODE TO GET CURRENT USER ***************
+
+        async function getCurrentUser() {
+            const response = await fetch('http://localhost:5000/api/getCurrentUser');
+            const json_response = await response.json();
+            const current_user = json_response['result'];
+            // console.log("Current user:");
+            // console.log(current_user);
+            return current_user;
+        }
+
+
+
+        // ************* CODE TO FETCH RESTAURANT'S PROFILE ***************
+
+        async function fetchRestaurantProfile() {
+            var current_user = await getCurrentUser();
+            // console.log("inside function before");
+            // console.log(current_user);
+            // console.log("inside function after");
+
+            const user_dict = { "username": current_user };
+            const response_getRestaurantProfile = await fetch('http://localhost:5000/api/fetchRestaurantProfile', { method: 'POST', body: JSON.stringify(user_dict) });
+            const json_restaurantProfile = await response_getRestaurantProfile.json();
+            restaurant_profile = json_restaurantProfile['result'];
+            // console.log(restaurant_profile);
+            return restaurant_profile;
+        }
+
+
+
+        // ************* CODE TO DISPLAY PAGE DETAILS ***************
+
+        async function displayPageDetails() {
+            var restaurant_profile = await fetchRestaurantProfile();
+            // var divContainer = document.createElement('div');
+            // divContainer.className = 'sellerProfileContainer';
+            var divContainer = document.getElementsByClassName('sellerProfileContainer')[0];
+            // document.getElementsByTagName("body")[0].appendChild(divContainer);
+
+            // profile pic of the seller
+            var divSellerImg = document.createElement('div');
+            divSellerImg.className = 'profilePic';
+            divSellerImg.style.backgroundImage = 'url(' + restaurant_profile['restaurant_image'] + ')';
+            divContainer.appendChild(divSellerImg);
+
+            // details of the seller
+            var divDetails = document.createElement('div');
+            divDetails.className = 'sellerDetails';
+            divContainer.appendChild(divDetails);
+
+            // username of the seller
+            var divSellerID = document.createElement('div');
+            divSellerID.id = 'sellerName';
+            divSellerID.innerHTML = restaurant_profile['username'];
+            divDetails.appendChild(divSellerID);
+
+            // cuisine types of the seller
+            var divFoodCTG = document.createElement('div');
+            divFoodCTG.id = 'sellerFoodType';
+            divFoodCTG.innerHTML = restaurant_profile['cuisine_types'];
+            divDetails.appendChild(divFoodCTG);
+
+            // address of the seller
+            var divSellerAddress = document.createElement('div');
+            divSellerAddress.id = 'sellerAddress';
+            divSellerAddress.innerHTML = restaurant_profile['location'];
+            divDetails.appendChild(divSellerAddress);
+
+            // <div id='rating'> Overall rating:
+            //     <span>&#9733;</span>
+            //     <span>&#9733;</span>
+            //     <span>&#9733;</span>
+            // </div>
+
+            // subscribe button
+            var subscribeButton = document.createElement('button');
+            subscribeButton.id = 'subscribe';
+            subscribeButton.innerHTML = "Subscribe";
+            subscribeButton.addEventListener("click", hitSubscribe);
+            divDetails.appendChild(subscribeButton);
+
+            // console.log(restaurant_profile);
+        }
+
+
+
+        // ************* CODE TO DISPLAY DISHES ***************
+
+        async function displayDishes() {
+            var restaurant_profile = await fetchRestaurantProfile();
+            var dishesContainer = document.getElementsByClassName('dishesContainer')[0];
+            all_dishes = restaurant_profile['dishes'];
+            console.log(all_dishes);
+            for (var i = all_dishes.length - 1; i >= 0; i--) {
+                current_dish = all_dishes[i];
+                // making block for dish
+                var block = document.createElement('div');
+                block.className = 'block';
+
+                // adding dish image
+                var dishImg = document.createElement('div');
+                // block.appendChild(dishImg);
+                dishImg.className = 'dishImg';
+                // dishImg.id = 'dishImg' + numOfDishes;
+                dishImg.style.backgroundImage = "url(" + current_dish['dish_pic'] + ")";
+                block.appendChild(dishImg);
+
+                // info section of dish
+                var info = document.createElement('div');
+                info.className = "info";
+                block.appendChild(info);
+
+                // making div for name and price of dish
+                var namePrice = document.createElement('div');
+                namePrice.className = "namePrice";
+                info.appendChild(namePrice);
+
+                // name of dish
+                var nameDish = document.createElement('div');
+                nameDish.className = "nameDish";
+                // nameDish.id = 'nameDish' + numOfDishes;
+                nameDish.innerHTML = current_dish['dish_name'];
+
+                // price of dish
+                var priceDish = document.createElement('div');
+                priceDish.className = "priceDish";
+                // priceDish.id = 'priceDish' + numOfDishes;
+                priceDish.innerHTML = '$' + current_dish['dish_price'];
+
+                // adding name and price to namePrice div
+                namePrice.appendChild(nameDish);
+                namePrice.appendChild(priceDish);
+
+                // ingredients of dish
+                var ingredients = document.createElement('div');
+                ingredients.className = "ingredient";
+                // ingredient.id = 'ingredient' + numOfDishes;
+                ingredients.innerHTML = current_dish['dish_ingredients'];
+                info.appendChild(ingredients);
+
+                // 'Order Now' button
+                var addCartButton = document.createElement('div');
+                addCartButton.className = "addCartButton";
+                // addCartButton.id = 'addCartButton' + numOfDishes;
+                addCartButton.innerHTML = 'ORDER NOW';
+                info.appendChild(addCartButton);
+
+                // TODO
+                addCartButton.onclick = function () {
+                    addCartButton.style.display = 'none';
+                }
+
+                // adding the block to the dishes container
+                dishesContainer.appendChild(block);
+            }
+
+        }
+
+        // ************* CODE FOR CLICKING 'SUBSCRIBE' BUTTON ***************
+
+        var c = 0;
+        function hitSubscribe() {
+            var x = document.getElementById('subscribe');
+            if (c % 2 == 0) {
+                x.innerHTML = 'Subscribed!';
+                x.style.background = 'gray';
+            }
+            else {
+                x.innerHTML = 'Subscribe';
+                x.style.background = '#E67864';
+            }
+            c++;
+        }
+
+
+
+        // ************* FUNCTIONS CALLED ***************
+
+        displayPageDetails();
+        displayDishes();
+
+
+        // async function obtainRestaurantProfile() {
+        //   await fetchRestaurantProfile();
+        //   console.log(restaurant_profile);
+        // }
+
+        // fetchRestaurantProfile();
+
+
+        // ********* CODE FOR COMMENTS *************
+
+        //alert('s');
+        // var comID = 0;
+        // function addComment(text, poster) {
+        //   if (!text) { return; }
+        //   //display div
+        //   //if id = even then background = white else gray
+        //   //height of div depends on length of text, but we dont care since it does it for u, just set innerHTMl = text, so no need to mention height
+
+        //   var com = document.createElement('div');
+        //   com.className = 'com';
+        //   com.id = 'com' + comID;
+        //   if (comID % 2 == 0) color = 'white';
+        //   else color = '#EDEDED';
+        //   com.style.background = color;
+        //   com.innerHTML = text + '<br><br><b>' + poster + '</b> - 1 hour ago';
+        //   if (poster == 'alex95') com.innerHTML = text + '<br><br><b>' + poster + '</b> - Just now';
+
+        //   var prevCom = document.getElementById('com' + (comID - 1));
+        //   document.getElementsByTagName('body')[0].insertBefore(com, prevCom);
+
+        //   comID++;
+        //   document.getElementById('textbox').value = '';
+
+        // }
+
+        // addComment("Hey food is awesome!", "potato");
+        // addComment("Keep it up guys", "comp307guy");
+        // addComment("Food is okay.Food is okay.Food is okay.Food is okay.Food is okay.Food is okay.Food is okay.", "longliveking");
+        // addComment("food sucks", "hater92");
+
+
+
+        // async function finalFunction() {
+        //     // await displayPageDetails();
+        //     await displayDishes();
+        // }
+        // finalFunction();
+
+
+    </script>
 </body>
 
 </html>
