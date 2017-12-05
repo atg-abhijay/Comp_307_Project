@@ -148,7 +148,7 @@
         "8": {
             "dish_name": "Pani Puri",
             "dish_price": 4.95,
-            "dish_pic": "pani_puri.jpeg",
+            "dish_pic": "../pics/inter.jpg",
             "dish_ingredients": [
                 "Imli",
                 "Green chutney",
@@ -159,7 +159,7 @@
         "9": {
             "dish_name": "Pani Puri",
             "dish_price": 4.95,
-            "dish_pic": "pani_puri.jpeg",
+            "dish_pic": "../pics/chithai.jpg",
             "dish_ingredients": [
                 "Imli",
                 "Green chutney",
@@ -170,7 +170,7 @@
         "10": {
             "dish_name": "Pav Bhaji",
             "dish_price": 5.65,
-            "dish_pic": "pav_bhaji.jpeg",
+            "dish_pic": "../pics/thai2.jpg",
             "dish_ingredients": [
                 "Aloo",
                 "Pav",
@@ -181,7 +181,7 @@
         "11": {
             "dish_name": "Pav Bhaji",
             "dish_price": 5.65,
-            "dish_pic": "pav_bhaji.jpeg",
+            "dish_pic": "../pics/greek2.jpg",
             "dish_ingredients": [
                 "Aloo",
                 "Pav",
@@ -192,7 +192,7 @@
         "12": {
             "dish_name": "Pav Bhaji",
             "dish_price": 5.65,
-            "dish_pic": "pav_bhaji.jpeg",
+            "dish_pic": "../pics/kebab.jpg",
             "dish_ingredients": [
                 "Aloo",
                 "Pav",
@@ -203,27 +203,27 @@
         "13": {
             "dish_name": "Foie Gras",
             "dish_price": 15.5,
-            "dish_pic": "foie_gras.jpeg",
+            "dish_pic": "../pics/sushi.jpg",
             "dish_ingredients": [
                 "Foie",
                 "Gras",
-                "???"
+                "Other fancy stuff"
             ]
         },
         "14": {
             "dish_name": "Foie Gras",
             "dish_price": 15.5,
-            "dish_pic": "foie_gras.jpeg",
+            "dish_pic": "../pics/steak.jpg",
             "dish_ingredients": [
                 "Foie",
                 "Gras",
-                "???"
+                "Other fancy stuff"
             ]
         },
         "15": {
             "dish_name": "Omelet Rice",
             "dish_price": 9.0,
-            "dish_pic": "omelet_rice.jpeg",
+            "dish_pic": "../pics/jap.jpg",
             "dish_ingredients": [
                 "Eggs",
                 "Rice",
