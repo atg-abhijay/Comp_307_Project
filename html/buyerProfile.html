@@ -1,0 +1,217 @@
+<!Doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../css/buyerProfile_style.css">
+</head>
+
+<body>
+
+    <!-- --------------Top bar----------------- -->
+    <div id='topbar'>
+        <div id='hoofoo'>
+            <a href="#">Hoofoo</a>
+        </div>
+
+        <div id='cart'>
+            <a href="#">Cart</a>
+        </div>
+
+        <div id='user' onclick="document.getElementById('id01').style.display='block'">
+            <a href="#">alex95</a>
+        </div>
+
+    </div>
+    <div class='main'>
+        <div class="vertical-menu">
+            <div class='buyerProfileImg' onMouseOver="showChooseFile()" onMouseOut="hideChooseFile()">
+                <input type="file" name="pi" accept="image/*" onchange="changePic()">
+            </div>
+            <div class='pastOrders' onclick='addDish()'>Past orders</div>
+            <div class='favorites' onclick='displaySellers()'>Favorites</div>
+
+        </div>
+
+        <div class='wrap'>
+            <div class='content'>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <script>
+        document.getElementsByName('pi')[0].style.display = 'none';
+        function showChooseFile() {
+            document.getElementsByName('pi')[0].style.display = 'block';
+        }
+        function hideChooseFile() {
+            document.getElementsByName('pi')[0].style.display = 'none';
+        }
+
+        function changePic() {
+            var img = document.getElementsByName('pi')[0].value;
+            if (img) {
+                img = img.slice(12, img.length);
+                var t = document.getElementsByClassName("buyerProfileImg")[0];
+                t.style.backgroundImage = 'url(' + img + ')';
+            }
+        }
+
+
+        /*list of favorite chefs*/
+        var sellers = [{ name: "JimmyChang123", neighbour: "Verdun", Tags: ["Beef", "Chicken", "Fish"] },
+        { name: "ZMaruoZ", neighbour: "Verdun", Tags: ["Chicken", "Pork", "Beef"] },
+        { name: "JimmyWong", neighbour: "Lachine", Tags: ["Chicken"] },
+        { name: "Kei94", neighbour: "Lachine", Tags: ["Fish"] },
+        { name: "holacomoestas", neighbour: "Ahuntsic-Cartierville", Tags: ["Fish", "Beef", "Pork"] },
+        { name: "Polypoly95", neighbour: "Ahuntsic-Cartierville", Tags: ["Beef"] }
+        ];
+
+        /*---display favorite chefs---*/
+        var favoritesContainer = document.createElement('div');
+        favoritesContainer.id = 'fc';
+        favoritesContainer.style.display = 'none';
+        document.getElementsByClassName("content")[0].appendChild(favoritesContainer);
+
+        var divFavoritesHead = document.createElement('div');
+        divFavoritesHead.style.margin = '10%';
+        divFavoritesHead.innerHTML = "<h2>Favorite chefs</h2>";
+
+        favoritesContainer.appendChild(divFavoritesHead);
+        /*display all sellers of list*/
+        for (var i = 0; i < sellers.length; i++) {
+
+            var divContainer = document.createElement('div');
+            divContainer.className = 'sellerProfileContainer';
+            divContainer.style.boxShadow = '0px 0px 5px #888888';
+
+            favoritesContainer.appendChild(divContainer);
+
+
+            var divSellerImg = document.createElement('div');
+            divSellerImg.className = 'sellerImg';
+
+            divContainer.appendChild(divSellerImg);
+
+
+            var divDetails = document.createElement('div');
+            divDetails.className = 'details';
+
+            divContainer.appendChild(divDetails);
+
+            var divSellerID = document.createElement('div');
+            divSellerID.className = 'sellerID';
+            divSellerID.innerHTML = sellers[i].name;
+
+            divDetails.appendChild(divSellerID);
+
+            var divFoodCTG = document.createElement('div');
+            divFoodCTG.className = 'foodCategories';
+            divFoodCTG.innerHTML = sellers[i].Tags;
+
+            divDetails.appendChild(divFoodCTG);
+
+        }
+
+        /*list of past orders*/
+        var dishes = [{ pic: "", name: "", price: "13.53", ingred: "Beef, tomato, hot sauce, fish" },
+        { pic: "", name: "A", price: "10", ingred: "" }, { pic: "", name: "a", price: "23", ingred: "" }, { pic: "", name: "abcd", price: "11", ingred: "" }, { pic: "", name: "", price: "11", ingred: "" }, { pic: "", name: "", price: "12", ingred: "" }, { pic: "", name: "", price: "15", ingred: "" }]
+
+
+        /*---display past orders---*/
+        var numOfDishes = 0;
+
+
+        var dishesContainer = document.createElement('div');
+        dishesContainer.id = 'po';
+        dishesContainer.style.display = 'none';
+        document.getElementsByClassName("content")[0].appendChild(dishesContainer);
+
+        var divPastOrdersHead = document.createElement('div');
+        divPastOrdersHead.style.margin = '10%';
+        divPastOrdersHead.style.marginBottom = '0%';
+        divPastOrdersHead.innerHTML = "<h2>Past orders</h2>";
+        dishesContainer.appendChild(divPastOrdersHead);
+
+        //block (block < parentDiv); needs ID and Class (ID,C)
+
+        for (var i = 0; i < dishes.length; i++) {
+            var block = document.createElement('div');
+            block.className = 'block';
+            block.id = 'block' + '' + numOfDishes;
+            block.style.boxShadow = '0px 0px 5px #888888';
+
+
+            var dishImg = document.createElement('div');
+            block.appendChild(dishImg);
+            dishImg.className = 'dishImg';
+            dishImg.id = 'dishImg' + numOfDishes;
+            dishImg.style.backgroundImage = "url(" + dishes[i].img + ")";
+
+
+            var info = document.createElement('div');
+            info.className = "info";
+            block.appendChild(info);
+
+
+            var namePrice = document.createElement('div');
+            namePrice.className = "namePrice";
+
+
+            info.appendChild(namePrice);
+
+            //namePrice (C)  (nameDish(C,ID) + priceDish(C,ID))
+            var nameDish = document.createElement('div');
+            nameDish.className = "nameDish";
+            nameDish.id = 'nameDish' + numOfDishes;
+
+            nameDish.innerHTML = dishes[i].name;
+
+            //C,ID
+            var priceDish = document.createElement('div');
+            priceDish.className = "priceDish";
+            priceDish.id = 'priceDish' + numOfDishes;
+            priceDish.innerHTML = '$' + dishes[i].price;
+
+            namePrice.appendChild(nameDish);
+            namePrice.appendChild(priceDish);
+
+
+            //C,ID
+            var ingredient = document.createElement('div');
+            ingredient.className = "ingredient";
+            ingredient.id = 'ingredient' + numOfDishes;
+            ingredient.innerHTML = dishes[i].ingred;
+            info.appendChild(ingredient);
+
+            var prevDish = document.getElementById('block' + (numOfDishes - 1));
+            dishesContainer.insertBefore(block, prevDish);
+
+            numOfDishes++;
+        }
+
+
+
+        /*displaySellers when click on Favorites*/
+        function displaySellers() {
+            var x = document.getElementById('fc');
+            x.style.display = 'block';
+            var y = document.getElementById('po');
+            y.style.display = 'none';
+
+        }
+
+        function addDish() {
+            var x = document.getElementById('fc');
+            x.style.display = 'none';
+            var y = document.getElementById('po');
+            y.style.display = 'block';
+        }
+
+    </script>
+
+</body>
+
+</html>

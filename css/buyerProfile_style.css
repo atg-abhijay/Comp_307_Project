@@ -1,0 +1,262 @@
+/*-------CSS Top bar (Hoofoo,User,Cart)----------*/
+
+body {
+    background:url("http://www.1designshop.com/wp-content/uploads/2015/12/1dsp-20151221-pattern005.png");
+    background: #DDEDED;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#topbar {
+
+    height: 40px;
+    /*background-color:#16A085;*/
+    margin-bottom: 5px;
+    box-sizing: border-box;
+}
+
+#topbar a {
+    text-decoration: none;
+    color: white;
+}
+
+#hoofoo {
+    float: left;
+    height: 100%;
+    /*background:gray;*/
+    float: left;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+#user {
+    height: 100%;
+    /*background:gray;*/
+    float: right;
+    padding: 15px;
+    box-sizing: border-box;
+
+    /*border-right: 2px solid #4B77BE;*/
+}
+
+#cart {
+    height: 100%;
+    /*background:gray;*/
+    float: right;
+    padding: 15px;
+    box-sizing: border-box;
+    margin-right: 20px;
+}
+
+.main {
+    width: 80%;
+    margin-left: 150px;
+    box-shadow: 0px 0px 5px #888888;
+}
+
+/*----CSS vertical menu----*/
+
+.vertical-menu {
+    width: 20%;
+    height: 100vh;
+    background: #333333;
+
+    float: left;
+
+}
+
+
+
+/*----CSS content----*/
+
+.wrap {
+
+    overflow: hidden;
+}
+
+.content {
+
+    width: 100%;
+    height: 100vh;
+    background: #dce4f2;
+    overflow: auto;
+
+}
+
+.buyerProfileImg {
+    padding: 45%;
+    margin: 5%;
+    text-align: center;
+    background:url("https://img00.deviantart.net/a24f/i/2013/083/f/1/facebook_avatar_by_twentyone182-d5z4vej.jpg");
+    background-image: url("../pics/profilePic.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    margin: 10px;
+}
+
+.pastOrders {
+    font-size: 20px;
+    padding: 30px;
+    text-align: center;
+    color: white;
+
+
+}
+
+.pastOrders:hover {
+    background: #2580A2;
+
+}
+
+.favorites {
+    font-size: 20px;
+    color: white;
+    padding: 30px;
+    text-align: center;
+
+}
+
+.favorites:hover {
+    background: #2580A2;
+}
+
+/*---------------CSS Display Chefs-------------*/
+
+.sellerProfileContainer {
+    margin: 50px;
+    margin-left: 10%;
+    height: 100px;
+    width: 500px;
+    border: 1px solid gray;
+
+    /*background:gray;*/
+}
+
+.sellerImg {
+    float: left;
+    width: 20%;
+    height: 100%;
+    background-image: url("http://images.all-free-download.com/images/graphiclarge/fries_and_steak_on_plate_193268.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+
+}
+
+.details {
+
+    float: left;
+    width: 80%;
+    height: 100%;
+    background: #F8F8FF;
+    background-image: url("https://i2.wp.com/sanctuaryphiladelphia.org/wp-content/uploads/2016/02/Silver-Blur-Background-e1455576248201.jpg?fit=1600%2C900");
+}
+
+.sellerID {
+    padding-top: 10px;
+    padding-left: 30px;
+    height: 30%;
+    font-weight: bold;
+    /*background:red;*/
+}
+
+.foodCategories {
+    padding-left: 30px;
+    height: 70%;
+    font-weight: 100;
+    font-size: 14px;
+    color: gray;
+    /*background: yellow;*/
+}
+
+/*-------CSS Dish----------*/
+
+.dishesContainer {
+
+
+    height: 266px;
+
+}
+
+.block {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10%;
+    width: 200px;
+    height: 250px;
+    float: left;
+    background: blue;
+
+
+}
+
+.dishImg {
+    width: 100%;
+    height: 65%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+
+.info {
+    font-size: 10px;
+    height: 35%;
+    background: #EDEDED;
+
+}
+
+
+.namePrice {
+    letter-spacing: 1px;
+    padding-top: 11%;
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 70%;
+
+}
+
+.nameDish {
+
+    color: #E67864;
+    font-weight: bold;
+    padding-LEFT: 8%;
+    width: 75%;
+    box-sizing: border-box;
+    height: 100%;
+
+    float: left;
+
+}
+
+.priceDish {
+    box-sizing: border-box;
+
+    text-align: center;
+    margin-left: 75%;
+    width: 25%;
+    height: 100%;
+    overflow: hidden;
+
+}
+
+.ingredient {
+
+    padding-top: 2%;
+    padding-left: 8%;
+    padding-right: 10%;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+    height: 30%;
+
+
+}
