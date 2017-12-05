@@ -46,7 +46,7 @@
         "1": {
             "username": "Vegeta",
             "owner_name": "Vegeta, Prince of All Saiyans",
-            "location": "Paris",
+            "location": "Outremont",
             "cuisine_types": [
                 "French",
                 "Greek",
@@ -55,24 +55,32 @@
             ],
             "restaurant_image": "../pics/greekchi2.jpg",
             "restaurant_name": "Saiyan Finesse",
-            "menu": []
+            "menu": [
+                20,
+                21
+            ]
         },
         "2": {
             "username": "Gohan",
             "owner_name": "Gohan, Son of Goku",
-            "location": "New York",
+            "location": "Rosemont–La Petite-Patrie",
             "cuisine_types": [
                 "Japanese",
                 "Thai"
             ],
             "restaurant_image": "../pics/thai.jpg",
             "restaurant_name": "Martial Art Bowls",
-            "menu": []
+            "menu": [
+                22,
+                23,
+                24,
+                25
+            ]
         },
         "3": {
             "username": "Kuroko",
             "owner_name": "Kuroko, Phantom Sixth Man",
-            "location": "Paris",
+            "location": "Verdun",
             "cuisine_types": [
                 "Chinese",
                 "Indian",
@@ -89,7 +97,7 @@
         "4": {
             "username": "Natsu",
             "owner_name": "Natsu, Fire Dragon Slayer",
-            "location": "Iceland",
+            "location": "Outremont",
             "cuisine_types": [
                 "Chinese",
                 "African",
@@ -107,7 +115,7 @@
         "5": {
             "username": "Grey",
             "owner_name": "Grey, Ice Demon Slayer",
-            "location": "Australia",
+            "location": "Westmount",
             "cuisine_types": [
                 "Chinese",
                 "Greek",
@@ -117,7 +125,8 @@
             "restaurant_image": "../pics/saumon.jpg",
             "restaurant_name": "Ice Blizzard",
             "menu": [
-                12
+                12,
+                19
             ]
         }
     },
@@ -257,6 +266,72 @@
             "dish_ingredients": [
                 "Fries",
                 "Gravy"
+            ]
+        },
+        "19": {
+            "dish_name": "Parfait",
+            "dish_price": 5.5,
+            "dish_pic": "../pics/parfait.jpeg",
+            "dish_ingredients": [
+                "Blueberries",
+                "Yogurt"
+            ]
+        },
+        "20": {
+            "dish_name": "Spaghetti",
+            "dish_price": 7.9,
+            "dish_pic": "../pics/spaghetti.jpg",
+            "dish_ingredients": [
+                "Noodles",
+                "Sauce"
+            ]
+        },
+        "21": {
+            "dish_name": "Pancakes",
+            "dish_price": 6.9,
+            "dish_pic": "../pics/pancakes.jpeg",
+            "dish_ingredients": [
+                "Pancakes",
+                "Syrup",
+                "Fruits",
+                "Cream"
+            ]
+        },
+        "22": {
+            "dish_name": "Hamburger",
+            "dish_price": 10.0,
+            "dish_pic": "../pics/hamburger.jpeg",
+            "dish_ingredients": [
+                "Ham",
+                "Buns",
+                "Tomato",
+                "Onions"
+            ]
+        },
+        "23": {
+            "dish_name": "Chocolate Cake",
+            "dish_price": 10.0,
+            "dish_pic": "../pics/chocolate_cake.jpeg",
+            "dish_ingredients": [
+                "Chocolate"
+            ]
+        },
+        "24": {
+            "dish_name": "Wrap",
+            "dish_price": 8.55,
+            "dish_pic": "../pics/wrap.jpeg",
+            "dish_ingredients": [
+                "Vegetables",
+                "Chicken"
+            ]
+        },
+        "25": {
+            "dish_name": "Macaroons",
+            "dish_price": 9.8,
+            "dish_pic": "../pics/macaroon.jpeg",
+            "dish_ingredients": [
+                "Sweet paste",
+                "Cake dough"
             ]
         }
     }
