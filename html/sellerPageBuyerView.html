@@ -270,22 +270,29 @@
             if (!text) {
                 return;
             }
-            /* display div
-            if id = even then background = white else gray
-            height of div depends on length of text, but we dont care since it does it for u, just set innerHTMl = text, so no need to mention height */
+            /* display div -
+                if id = even then background = white else gray
+                height of div depends on length of text, but we
+                dont care since it does it for u, just set innerHTMl = text,
+                so no need to mention height */
 
             var com = document.createElement('div');
             com.className = 'com';
             com.id = 'com' + comID;
-            if (comID % 2 == 0) color = 'white';
-            else color = '#EDEDED';
+            if (comID % 2 == 0) {
+                color = 'white';
+            }
+            else {
+                color = '#EDEDED';
+            }
             com.style.background = color;
             com.innerHTML = text + '<br><br><b>' + poster + '</b> - 1 hour ago';
-            if (poster == 'alex95') com.innerHTML = text + '<br><br><b>' + poster + '</b> - Just now';
+            if (poster == 'alex95'){
+                com.innerHTML = text + '<br><br><b>' + poster + '</b> - Just now';
+            }
 
             var prevCom = document.getElementById('com' + (comID - 1));
             document.getElementsByTagName('body')[0].insertBefore(com, prevCom);
-
             comID++;
             document.getElementById('textbox').value = '';
 
