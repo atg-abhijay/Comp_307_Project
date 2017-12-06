@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, request, Response
 from flask_cors import CORS
 from tinydb import TinyDB, Query
-from pprint import pprint
 import json
 
 db = TinyDB('db.json')
