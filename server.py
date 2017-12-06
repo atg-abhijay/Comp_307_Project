@@ -115,6 +115,13 @@ def fetchRestaurantProfile(uname):
 Actual Endpoints
 '''
 
+'''
+expects an input of the form -
+{ "current_user": "John" }
+used to store which seller was clicked
+on the home page from the results obtained
+upon clicking the 'Find Chefs' button
+'''
 @app.route('/api/setCurrentUser', methods=['POST'])
 def route_setCurrentUser():
     body = request.get_json(force=True)
@@ -132,6 +139,14 @@ def route_getCurrentUser():
     return resp
 
 
+
+'''
+expects an input of the form -
+{
+	"cuisine_type": "Italian",
+	"location": "Anywhere"
+}
+'''
 @app.route('/api/findChefs', methods=['POST'])
 def route_findChefs():
     body = request.get_json(force=True)
@@ -147,6 +162,17 @@ def route_findChefs():
     # return "Found chefs!"
 
 
+'''
+expects an input of the form -
+{
+	"dish_name": "Macaroons",
+	"dish_price": 9.80,
+	"dish_ingredients": ["Sweet paste", "Cake dough"],
+	"dish_pic": "../pics/macaroon.jpeg",
+	"username": "Gohan"
+}
+supply the username to which a dish is being added
+'''
 @app.route('/api/addDish', methods=['POST'])
 def route_addDish():
     body = request.get_json(force=True)
@@ -163,6 +189,16 @@ def route_addDish():
 
 
 
+'''
+expects an input of the form -
+{
+	"dish_name": "Idli",
+	"dish_price": 4.15,
+	"dish_ingredients": ["Basmati Rice", "Ghee"]
+}
+supply the name of the dish(which doesn't change)
+and reassign values to price and ingredients
+'''
 @app.route('/api/editDish', methods=['POST'])
 def route_editDish():
     body = request.get_json(force=True)
@@ -175,6 +211,12 @@ def route_editDish():
 
 
 
+'''
+expects an input of the form -
+{
+	"dish_name": "Dosa"
+}
+'''
 @app.route('/api/deleteDish', methods=['POST'])
 def route_deleteDish():
     body = request.get_json(force=True)
@@ -185,6 +227,14 @@ def route_deleteDish():
 
 
 
+'''
+expects an input of the form -
+{
+	"username": "Grey",
+	"password": "46trafsdfsdbf",
+	"email": "grey@fairytail.com"
+}
+'''
 @app.route('/api/addUser', methods=['POST'])
 def route_addUser():
     body = request.get_json(force=True)
@@ -201,6 +251,19 @@ def route_addUser():
 
 
 
+'''
+expects an input of the form -
+{
+	"username": "Natsu",
+	"owner_name": "Natsu, Fire Dragon Slayer",
+	"location": "Iceland",
+	"cuisine_types": ["Chinese", "African", "Mexican", "Japanese"],
+	"restaurant_image": "natsu_restaurant.jpeg",
+	"restaurant_name": "Fire Ball"
+}
+supply the username whose restaurant details you
+want to change and give new values for the fields
+'''
 @app.route('/api/editRestaurant', methods=['POST'])
 def route_editRestaurant():
     body = request.get_json(force=True)
@@ -216,6 +279,14 @@ def route_editRestaurant():
 
 
 
+'''
+expects an input of the form -
+{
+	"username": "Kuroko"
+}
+supply the username to get that user's
+restaurant's dishes
+'''
 @app.route('/api/getRestaurantDishes', methods=['POST'])
 def route_getRestaurantDishes():
     body = request.get_json(force=True)
@@ -231,6 +302,15 @@ def route_getRestaurantDishes():
 
 
 
+'''
+expects an input of the form -
+{
+	"username": "Natsu",
+	"password": "fire_dragon"
+}
+supply username and password and this will
+return true/false if details are right/wrong
+'''
 @app.route('/api/signIn', methods=['POST'])
 def route_signIn():
     body = request.get_json(force=True)
@@ -244,6 +324,15 @@ def route_signIn():
     return resp
 
 
+
+'''
+expects an input of the form -
+{
+	"username": "Gohan"
+}
+supply the username to get all the
+details of the restaurant
+'''
 @app.route('/api/fetchRestaurantProfile', methods=['POST'])
 def route_fetchProfile():
     body = request.get_json(force=True)
