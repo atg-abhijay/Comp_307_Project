@@ -7,6 +7,7 @@ db = TinyDB('db.json')
 users = db.table('users') #this is users table
 restaurants = db.table('restaurants')
 dishes = db.table('dishes')
+comments = db.table('comments')
 
 currentUsername = ""
 
@@ -27,7 +28,7 @@ def getCurrentUserName():
     return currentUsername
 
 def addUser(uname, pwd, email):
-    users.insert({'username' : uname, 'password' : pwd, "email" : email, 'comments': {}})
+    users.insert({'username' : uname, 'password' : pwd, "email" : email, 'comments': []})
 
 def signIn(uname, pwd):
     User_query = Query()
@@ -111,15 +112,22 @@ def fetchRestaurantProfile(uname):
 
 
 def addComment(current_user, buyer_name, comment):
+    commentID = comments.insert({'buyer_name': buyer_name, 'comment': comment})
     User_query = Query()
     found_user = users.search(User_query.username == current_user)[0]
-    comments_dict = found_user['comments']
-    num_comments = len(comments_dict)
-    # comments_dict[num_comments + 1] = (buyer_name, comment)
-    comment_tuple = (buyer_name, comment)
-    comments_dict[num_comments + 1] = comment_tuple
-    users.update({'comments': comments_dict}, User_query.username == current_user)
+    comments_list = found_user['comments']
+    comments_list.append(commentID)
+    users.update({'comments': comments_list}, User_query.username == current_user)
 
+def returnUserComments(uname):
+    User_query = Query()
+    found_user = users.search(User_query.username == uname)[0]
+    user_comments = found_user['comments']
+    comments_list = []
+    for comment_number in user_comments:
+        comment = comments.get(doc_id=comment_number)
+        comments_list.append(comment)
+    return comments_list
 
 '''
 Actual Endpoints
@@ -374,6 +382,27 @@ def route_addComment():
     comment = body['comment']
     addComment(current_user, buyer_name, comment)
     return "Successfully added comment!"
+
+
+'''
+expects an input of the form -
+{
+    "username": "Natsu"
+}
+supply the username whose comments
+you want to get
+'''
+@app.route('/api/getUserComments', methods=['POST'])
+def route_getUserComments():
+    body = request.get_json(force=True)
+    uname = body['username']
+    comments_list = returnUserComments(uname)
+    # return jsonify({'result': dishes_list})
+    json_result = json.dumps({'result': comments_list})
+    print(json_result)
+    resp = Response(response=json_result, status=200, mimetype='application/json')
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp
 
 
 '''
