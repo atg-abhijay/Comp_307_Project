@@ -4,42 +4,64 @@
         "1": {
             "username": "Abhijay",
             "password": "asdfas",
-            "email": "abc@yz.com"
+            "email": "abc@yz.com",
+            "comments": {}
         },
         "2": {
             "username": "Abhishek",
             "password": "asdgsahasdgshas",
-            "email": "def@xyz.com"
+            "email": "def@xyz.com",
+            "comments": {}
         },
         "3": {
             "username": "Goku",
             "password": "sagasgash",
-            "email": "goku@dbz.com"
+            "email": "goku@dbz.com",
+            "comments": {}
         },
         "4": {
             "username": "Vegeta",
             "password": "sagsdgasg",
-            "email": "vegeta@dbz.com"
+            "email": "vegeta@dbz.com",
+            "comments": {
+                "1": [
+                    "Blasdf Buyer",
+                    "Food is lovely!"
+                ]
+            }
         },
         "5": {
             "username": "Gohan",
             "password": "asgsahsafh",
-            "email": "gohan@dbz.com"
+            "email": "gohan@dbz.com",
+            "comments": {
+                "1": [
+                    "Palooza Buyer",
+                    "Food is great!"
+                ],
+                "2": [
+                    "Excited Buyer",
+                    "IT TASTES SO GOOD!!"
+                ]
+            }
         },
         "6": {
             "username": "Kuroko",
             "password": "bbislove",
-            "email": "kuroko@kurokosbb.com"
+            "email": "kuroko@kurokosbb.com",
+            "comments": {}
         },
         "7": {
             "username": "Natsu",
             "password": "firedragon",
-            "email": "natsu@fairytail.com"
+            "email": "natsu@fairytail.com",
+            "comments": {}
         },
         "8": {
             "username": "Grey",
             "password": "46trafsdfsdbf",
-            "email": "grey@fairytail.com"
+            "email": "grey@fairytail.com",
+            "comments": {}
         }
     },
     "restaurants": {
@@ -63,7 +85,7 @@
         "2": {
             "username": "Gohan",
             "owner_name": "Gohan, Son of Goku",
-            "location": "Rosemont–La Petite-Patrie",
+            "location": "Rosemont\u2013La Petite-Patrie",
             "cuisine_types": [
                 "Japanese",
                 "Thai"

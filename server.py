@@ -27,7 +27,7 @@ def getCurrentUserName():
     return currentUsername
 
 def addUser(uname, pwd, email):
-    users.insert({'username' : uname, 'password' : pwd, "email" : email})
+    users.insert({'username' : uname, 'password' : pwd, "email" : email, 'comments': {}})
 
 def signIn(uname, pwd):
     User_query = Query()
@@ -108,6 +108,17 @@ def fetchRestaurantProfile(uname):
     dishes_list = returnRestaurantDishes(uname)
     found_restaurant['dishes'] = dishes_list
     return found_restaurant
+
+
+def addComment(current_user, buyer_name, comment):
+    User_query = Query()
+    found_user = users.search(User_query.username == current_user)[0]
+    comments_dict = found_user['comments']
+    num_comments = len(comments_dict)
+    # comments_dict[num_comments + 1] = (buyer_name, comment)
+    comment_tuple = (buyer_name, comment)
+    comments_dict[num_comments + 1] = comment_tuple
+    users.update({'comments': comments_dict}, User_query.username == current_user)
 
 
 '''
@@ -343,6 +354,26 @@ def route_fetchProfile():
     resp.headers['Access-Control-Allow-Origin'] = '*'
     return resp
 
+
+
+'''
+expects an input of the form -
+{
+    "current_user": "Marko",
+	"buyer_name": "Palooza Buyer",
+	"comment": "Food is great!"
+}
+supply the username whose restaurant details you
+want to change and give new values for the fields
+'''
+@app.route('/api/addComment', methods=['POST'])
+def route_addComment():
+    body = request.get_json(force=True)
+    current_user = body['current_user']
+    buyer_name = body['buyer_name']
+    comment = body['comment']
+    addComment(current_user, buyer_name, comment)
+    return "Successfully added comment!"
 
 
 '''
